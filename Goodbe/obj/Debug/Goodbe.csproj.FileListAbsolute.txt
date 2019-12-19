@@ -1,0 +1,7 @@
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\bin\Debug\Goodbe.exe.config
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\bin\Debug\Goodbe.exe
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\bin\Debug\Goodbe.pdb
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\obj\Debug\Goodbe.csprojAssemblyReference.cache
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\obj\Debug\Goodbe.csproj.CoreCompileInputs.cache
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\obj\Debug\Goodbe.exe
+C:\Users\NielsenH\Documents\Eigene Dateien\Tools\Goodbe\Goodbe\obj\Debug\Goodbe.pdb
