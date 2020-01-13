@@ -109,24 +109,21 @@ namespace Goodbee
             {
                 startTimeTextBox.Text = startTime.ToShortTimeString();
             }
+            else if (DateTime.TryParse(startTimeTextBox.Text, out startTime))
+            {
+                // Clear textbox background
+                startTimeTextBox.ClearValue(BackgroundProperty);
+
+                // Refresh display times
+                RefreshDisplayTimes();
+                timer.Start();
+            }
             else
             {
-                if (DateTime.TryParse(startTimeTextBox.Text, out startTime))
-                {
-                    // Clear textbox background
-                    startTimeTextBox.ClearValue(BackgroundProperty);
-
-                    // Refresh display times
-                    RefreshDisplayTimes();
-                    timer.Start();
-                }
-                else
-                {
-                    // Error state
-                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error);
-                    startTimeTextBox.Background = Brushes.IndianRed;
-                    timer.Stop();
-                }
+                // Error state
+                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error);
+                startTimeTextBox.Background = Brushes.IndianRed;
+                timer.Stop();
             }
         }
 
