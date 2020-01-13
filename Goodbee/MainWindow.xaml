@@ -25,10 +25,10 @@
         <Label Grid.Row="2" VerticalAlignment="Center">Feierabend</Label>
         <Label Grid.Row="3" VerticalAlignment="Center">9h Pause</Label>
 
-        <TextBox Name="ArbeitsbeginnTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" Margin="25,0,5,0" KeyDown="ArbeitsbeginnTextBox_OnKeyDown" GotFocus="ArbeitsbeginnTextBox_GotFocus" LostFocus="ArbeitsbeginnTextBox_LostFocus"></TextBox>
-        <TextBox Name="SechsStundenPauseTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
-        <TextBox Name="FeierabendTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
-        <TextBox Name="NeunStundenPauseTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
+        <TextBox Name="startTimeTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" Margin="25,0,5,0" KeyDown="StartTimeTextBox_OnKeyDown" GotFocus="StartTimeTextBox_GotFocus" LostFocus="StartTimeTextBox_LostFocus"></TextBox>
+        <TextBox Name="sixHourBreakTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
+        <TextBox Name="endTimeTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
+        <TextBox Name="nineHourBreakTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSteelBlue" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
 
     </Grid>
 </Window>

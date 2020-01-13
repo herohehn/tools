@@ -15,10 +15,11 @@ namespace Goodbee
     /// </summary>
     public partial class MainWindow : Window
     {
-        DateTime Arbeitsbeginn;
-        DateTime SechsStundenPause { get { return Arbeitsbeginn.AddHours(6); } }
-        DateTime Feierabend { get { return Arbeitsbeginn.AddHours(7.6).AddMinutes(30); } }
-        DateTime NeunStundenPause { get { return Arbeitsbeginn.AddHours(9.5); } }
+        DateTime startTime;
+        DateTime sixHourBreak { get { return startTime.AddHours(6); } }
+        DateTime endTime { get { return startTime.AddHours(7.6).AddMinutes(30); } }
+        DateTime nineHourBreak { get { return startTime.AddHours(9.5); } }
+
         private bool soundHasBeenPlayed;
         DispatcherTimer timer = new DispatcherTimer();
 
@@ -28,7 +29,7 @@ namespace Goodbee
         public MainWindow()
         {
             InitializeComponent();
-            Arbeitsbeginn = Process.GetCurrentProcess().StartTime;
+            startTime = Process.GetCurrentProcess().StartTime;
 
             RefreshDisplayTimes();
 
@@ -44,19 +45,19 @@ namespace Goodbee
         private void UpdateNotifications(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
-            TaskbarManager.Instance.SetProgressValue((int)(currentTime - Arbeitsbeginn).TotalMinutes, (int)(Feierabend - Arbeitsbeginn).TotalMinutes); // (currentValue, maxValue) - minValue is always 0
+            TaskbarManager.Instance.SetProgressValue((int)(currentTime - startTime).TotalMinutes, (int)(endTime - startTime).TotalMinutes); // (currentValue, maxValue) - minValue is always 0
 
             // Taskbar color handling
-            if (currentTime > SechsStundenPause && currentTime < SechsStundenPause.AddMinutes(30))
+            if (currentTime > sixHourBreak && currentTime < sixHourBreak.AddMinutes(30))
             {
                 // Pause state (color change) during 6h break
                 TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Paused);
             }
-            else if (currentTime > Feierabend)
+            else if (currentTime > endTime)
             {
                 if (!soundHasBeenPlayed)
                 {
-                    // Play soundfile FEIERABEND.wav by Patrick Fuhlert
+                    // Play soundfile FEIERABEND.wav by Padrig Foolert
                     SoundPlayer sound = new SoundPlayer(Properties.Resources.FEIERABEND);
                     sound.Play();
                     soundHasBeenPlayed = true;
@@ -73,47 +74,47 @@ namespace Goodbee
         }
 
         /// <summary>
-        /// Set startup time using the enter key
+        /// Set start time using the enter key
         /// </summary>
-        private void ArbeitsbeginnTextBox_OnKeyDown(object sender, KeyEventArgs e)
+        private void StartTimeTextBox_OnKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                SetArbeitsbeginn();
+                SetStartTime();
             }
         }
 
         /// <summary>
         /// Clear textbox when focused
         /// </summary>
-        private void ArbeitsbeginnTextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void StartTimeTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            ArbeitsbeginnTextBox.Clear();
+            startTimeTextBox.Clear();
         }
 
         /// <summary>
-        /// Set startup time when losing focus
+        /// Set start time when losing focus
         /// </summary>
-        private void ArbeitsbeginnTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void StartTimeTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            SetArbeitsbeginn();
+            SetStartTime();
         }
 
         /// <summary>
-        /// Change startup time using the interface
+        /// Change start time using the interface
         /// </summary>
-        private void SetArbeitsbeginn()
+        private void SetStartTime()
         {
-            if (ArbeitsbeginnTextBox.Text.Length <= 0)
+            if (startTimeTextBox.Text.Length <= 0)
             {
-                ArbeitsbeginnTextBox.Text = Arbeitsbeginn.ToShortTimeString();
+                startTimeTextBox.Text = startTime.ToShortTimeString();
             }
             else
             {
-                if (DateTime.TryParse(ArbeitsbeginnTextBox.Text, out Arbeitsbeginn))
+                if (DateTime.TryParse(startTimeTextBox.Text, out startTime))
                 {
                     // Clear textbox background
-                    ArbeitsbeginnTextBox.ClearValue(BackgroundProperty);
+                    startTimeTextBox.ClearValue(BackgroundProperty);
 
                     // Refresh display times
                     RefreshDisplayTimes();
@@ -123,7 +124,7 @@ namespace Goodbee
                 {
                     // Error state
                     TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Error);
-                    ArbeitsbeginnTextBox.Background = Brushes.IndianRed;
+                    startTimeTextBox.Background = Brushes.IndianRed;
                     timer.Stop();
                 }
             }
@@ -134,10 +135,10 @@ namespace Goodbee
         /// </summary>
         private void RefreshDisplayTimes()
         {
-            ArbeitsbeginnTextBox.Text = Arbeitsbeginn.ToShortTimeString();
-            SechsStundenPauseTextBox.Text = SechsStundenPause.ToShortTimeString();
-            FeierabendTextBox.Text = Feierabend.ToShortTimeString();
-            NeunStundenPauseTextBox.Text = NeunStundenPause.ToShortTimeString();
+            startTimeTextBox.Text = startTime.ToShortTimeString();
+            sixHourBreakTextBox.Text = sixHourBreak.ToShortTimeString();
+            endTimeTextBox.Text = endTime.ToShortTimeString();
+            nineHourBreakTextBox.Text = nineHourBreak.ToShortTimeString();
         }
     }
 }
