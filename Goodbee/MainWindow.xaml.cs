@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.WindowsAPICodePack.Taskbar;
+using System;
 using System.Diagnostics;
-using System.IO;
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace Goodbee
 {
@@ -45,7 +44,17 @@ namespace Goodbee
         private void UpdateNotifications(object sender, EventArgs e)
         {
             DateTime currentTime = DateTime.Now;
-            TaskbarManager.Instance.SetProgressValue((int)(currentTime - startTime).TotalMinutes, (int)(endTime - startTime).TotalMinutes); // (currentValue, maxValue) - minValue is always 0
+
+            if (startTime <= currentTime)
+            {
+                // Normal use case
+                TaskbarManager.Instance.SetProgressValue((int)(currentTime - startTime).TotalMinutes, (int)(endTime - startTime).TotalMinutes);
+            }
+            else
+            {
+                // Look into the future case
+                TaskbarManager.Instance.SetProgressValue(0, (int)(endTime - startTime).TotalMinutes);
+            }
 
             // Taskbar color handling
             if (currentTime > sixHourBreak && currentTime < sixHourBreak.AddMinutes(30))
