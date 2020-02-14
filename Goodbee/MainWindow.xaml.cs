@@ -19,7 +19,8 @@ namespace Goodbee
         DateTime endTime { get { return startTime.AddHours(7.6).AddMinutes(30); } }
         DateTime nineHourBreak { get { return startTime.AddHours(9.5); } }
 
-        private bool soundHasBeenPlayed;
+        private bool playSound = false;
+        private bool flashTaskbar = true;
         DispatcherTimer timer = new DispatcherTimer();
 
         /// <summary>
@@ -64,16 +65,19 @@ namespace Goodbee
             }
             else if (currentTime > endTime)
             {
-                if (!soundHasBeenPlayed)
+                if (playSound)
                 {
                     // Play soundfile FEIERABEND.wav by Padrig Foolert
                     SoundPlayer sound = new SoundPlayer(Properties.Resources.FEIERABEND);
                     sound.Play();
-                    soundHasBeenPlayed = true;
+                    playSound = false;
                 }
 
-                // Indeterminate state (flashing) when you should call it a day
-                TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                if (flashTaskbar)
+                {
+                    // Indeterminate state (flashing) when you should call it a day
+                    TaskbarManager.Instance.SetProgressState(TaskbarProgressBarState.Indeterminate);
+                }
             }
             else
             {
@@ -145,6 +149,40 @@ namespace Goodbee
             sixHourBreakTextBox.Text = sixHourBreak.ToShortTimeString();
             endTimeTextBox.Text = endTime.ToShortTimeString();
             nineHourBreakTextBox.Text = nineHourBreak.ToShortTimeString();
+        }
+
+        /// <summary>
+        /// Toggle sound notification on/off
+        /// </summary>
+        private void ToggleSoundButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (playSound)
+            {
+                playSound = false;
+                toggleSoundButton.Content = "Deaktiviert";
+            }
+            else
+            {
+                playSound = true;
+                toggleSoundButton.Content = "Aktiviert";
+            }
+        }
+
+        /// <summary>
+        /// Toggle taskbar flashing on/off
+        /// </summary>
+        private void ToggleFlashingButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (flashTaskbar)
+            {
+                flashTaskbar = false;
+                toggleFlashingButton.Content = "Deaktiviert";
+            }
+            else
+            {
+                flashTaskbar = true;
+                toggleFlashingButton.Content = "Aktiviert";
+            }
         }
     }
 }
