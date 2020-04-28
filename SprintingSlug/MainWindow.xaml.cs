@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -28,11 +29,16 @@ namespace SprintingSlug
         {
             InitializeComponent();
 
-            // Deserialize wordlists
             try
             {
+                // Deserialize wordlists
                 adjectives = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Wordlists\Adjectives.txt").ToList();
                 animals = File.ReadAllLines(Directory.GetCurrentDirectory() + @"\Wordlists\Animals.txt").ToList();
+
+                // Format wordlists to title case
+                CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                adjectives = adjectives.Select(adjective => currentCulture.TextInfo.ToTitleCase(adjective.ToLower())).ToList();
+                animals = adjectives.Select(animal => currentCulture.TextInfo.ToTitleCase(animal.ToLower())).ToList();
             }
             catch (Exception ex)
             {
