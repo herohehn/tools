@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wordlists\Adjectives.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Wordlists\Animals.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
