@@ -37,8 +37,8 @@ namespace SprintingSlug
 
                 // Format wordlists to title case
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
-                adjectives = adjectives.Select(adjective => currentCulture.TextInfo.ToTitleCase(adjective.ToLower())).ToList();
-                animals = adjectives.Select(animal => currentCulture.TextInfo.ToTitleCase(animal.ToLower())).ToList();
+                adjectives = adjectives.ConvertAll(adjective => currentCulture.TextInfo.ToTitleCase(adjective.ToLower()));
+                animals = animals.ConvertAll(animal => currentCulture.TextInfo.ToTitleCase(animal.ToLower()));
             }
             catch (Exception ex)
             {
