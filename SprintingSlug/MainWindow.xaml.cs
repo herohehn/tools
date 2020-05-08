@@ -24,6 +24,7 @@ namespace SprintingSlug
     {
         List<string> adjectives;
         List<string> animals;
+        Random rnd = new Random();
 
         public MainWindow()
         {
@@ -48,7 +49,11 @@ namespace SprintingSlug
 
         public string GetAdjective(char c)
         {
-            return "alerting";
+            // Filter adjectives wordlist for leading char (parameter)
+            List<string> filteredAdjectives = adjectives.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
+
+            // Return one random adjective from the filtered wordlist
+            return filteredAdjectives[rnd.Next(0, filteredAdjectives.Count())];
         }
     }
 }
