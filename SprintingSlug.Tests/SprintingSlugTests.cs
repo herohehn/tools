@@ -6,18 +6,21 @@ namespace SprintingSlug.Tests
     [TestClass]
     public class SprintingSlugTests
     {
+        MainWindow sprintingSlug = new MainWindow();
+
         [TestMethod]
-        public void GetAdjectives()
+        public void GetAdjective()
         {
-            // Returns a list of adjectives
-            // All trailing chars match given parameter
+            // Returns an adjective
+            // Trailing char matches given parameter
+            Assert.AreEqual('a', sprintingSlug.GetAdjective('a').ToCharArray()[0]);
         }
 
         [TestMethod]
-        public void GetAnimals()
+        public void GetAnimal()
         {
-            // Returns a list of animals
-            // All trailing chars match given parameter
+            // Returns an animal
+            // Trailing char matches given parameter
         }
 
         // All trailing chars are uppercase

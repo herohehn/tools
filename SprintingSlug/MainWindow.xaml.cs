@@ -45,5 +45,10 @@ namespace SprintingSlug
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public string GetAdjective(char c)
+        {
+            return "alerting";
+        }
     }
 }
