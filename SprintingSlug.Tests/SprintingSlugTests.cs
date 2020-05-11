@@ -33,6 +33,46 @@ namespace SprintingSlug.Tests
         }
 
         [TestMethod]
+        public void GetAdjective_NotFound()
+        {
+            // Empty the wordlist to be sure that nothing is found
+            sprintingSlug.adjectives.Clear();
+
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('a'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('X'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('x'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Z'));
+
+            // Weird but allowed
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ä'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ü'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ö'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ó'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ô'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ô'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ŏ'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ő'));
+            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ø'));
+        }
+
+        [TestMethod]
+        public void GetAdjective_NoLetter()
+        {
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('_'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective(' '));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('-'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('%'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('.'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('×'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('¿'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('/'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('|'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('1'));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('='));
+            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('#'));
+        }
+
+        [TestMethod]
         public void GetAnimal_NonEmptyString()
         {
             // Returns a string that has more than one character
@@ -55,9 +95,5 @@ namespace SprintingSlug.Tests
             Assert.AreEqual('Z', sprintingSlug.GetAnimal('z').ToCharArray()[0]);
             Assert.AreEqual('Z', sprintingSlug.GetAnimal('Z').ToCharArray()[0]);
         }
-
-        // Unallowed input throws (' ', %, -, .)
-        // Weird but allowed (Ó, ô, Ô, ö, Ö, ŏ, ō, Ō, ő, ø)
-        // Nothing found
     }
 }
