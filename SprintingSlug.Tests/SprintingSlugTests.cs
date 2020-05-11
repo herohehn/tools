@@ -33,10 +33,27 @@ namespace SprintingSlug.Tests
         }
 
         [TestMethod]
-        public void GetAnimal()
+        public void GetAnimal_NonEmptyString()
         {
-            // Returns an animal
-            // Leading char matches given parameter (uppercase)
+            // Returns a string that has more than one character
+            var result = sprintingSlug.GetAnimal('o');
+            Assert.IsTrue(result is string);
+            Assert.IsFalse(string.IsNullOrEmpty(result));
+            Assert.IsTrue(result.Length > 1);
+        }
+
+        [TestMethod]
+        public void GetAnimal_LeadingCharMatches()
+        {
+            // Leading char matches given parameter (in uppercase)
+            Assert.AreEqual('A', sprintingSlug.GetAnimal('a').ToCharArray()[0]);
+            Assert.AreEqual('A', sprintingSlug.GetAnimal('A').ToCharArray()[0]);
+
+            Assert.AreEqual('H', sprintingSlug.GetAnimal('H').ToCharArray()[0]);
+            Assert.AreEqual('N', sprintingSlug.GetAnimal('n').ToCharArray()[0]);
+
+            Assert.AreEqual('Z', sprintingSlug.GetAnimal('z').ToCharArray()[0]);
+            Assert.AreEqual('Z', sprintingSlug.GetAnimal('Z').ToCharArray()[0]);
         }
 
         // Unallowed input throws (' ', %, -, .)
