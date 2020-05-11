@@ -22,8 +22,8 @@ namespace SprintingSlug
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<string> adjectives;
-        List<string> animals;
+        public List<string> adjectives;
+        public List<string> animals;
         Random rnd = new Random();
 
         public MainWindow()
@@ -49,11 +49,26 @@ namespace SprintingSlug
 
         public string GetAdjective(char c)
         {
-            // Filter adjectives wordlist for leading char (parameter)
-            List<string> filteredAdjectives = adjectives.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
+            // Check if input is an allowed letter
+            if (char.IsLetter(c))
+            {
+                // Filter adjectives wordlist for leading char (parameter)
+                List<string> filteredAdjectives = adjectives.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
 
-            // Return one random adjective from the filtered wordlist
-            return filteredAdjectives[rnd.Next(0, filteredAdjectives.Count())];
+                if (filteredAdjectives.Count != 0)
+                {
+                    // Return one random adjective from the filtered wordlist
+                    return filteredAdjectives[rnd.Next(0, filteredAdjectives.Count())];
+                }
+                else
+                {
+                    return "Nothing found.";
+                }
+            }
+            else
+            {
+                return "Unallowed input.";
+            }
         }
 
         public string GetAnimal(char c)
