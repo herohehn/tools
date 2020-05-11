@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SprintingSlug.Tests
 {
@@ -38,38 +37,38 @@ namespace SprintingSlug.Tests
             // Empty the wordlist to be sure that nothing is found
             sprintingSlug.adjectives.Clear();
 
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('a'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('X'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('x'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Z'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('a'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('X'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('x'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('Z'));
 
             // Weird but allowed
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ä'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ü'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ö'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ó'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ô'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('Ô'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ŏ'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ő'));
-            Assert.AreEqual("Nothing found.", sprintingSlug.GetAdjective('ø'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ä'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('Ü'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ö'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('Ó'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ô'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('Ô'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ŏ'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ő'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAdjective('ø'));
         }
 
         [TestMethod]
         public void GetAdjective_NoLetter()
         {
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('_'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective(' '));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('-'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('%'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('.'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('×'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('¿'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('/'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('|'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('1'));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('='));
-            Assert.AreEqual("Unallowed input.", sprintingSlug.GetAdjective('#'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('_'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective(' '));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('-'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('%'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('.'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('×'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('¿'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('/'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('|'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('1'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('='));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAdjective('#'));
         }
 
         [TestMethod]

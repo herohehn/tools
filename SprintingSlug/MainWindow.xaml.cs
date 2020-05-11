@@ -3,17 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SprintingSlug
 {
@@ -24,7 +14,10 @@ namespace SprintingSlug
     {
         public List<string> adjectives;
         public List<string> animals;
-        Random rnd = new Random();
+        readonly Random rnd = new Random();
+
+        public readonly string nothingFound = "Nothing found.";
+        public readonly string unallowedInput = "Unallowed input.";
 
         public MainWindow()
         {
@@ -55,19 +48,19 @@ namespace SprintingSlug
                 // Filter adjectives wordlist for leading char (parameter)
                 List<string> filteredAdjectives = adjectives.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
 
-                if (filteredAdjectives.Count != 0)
+                if (filteredAdjectives.Count > 0)
                 {
                     // Return one random adjective from the filtered wordlist
                     return filteredAdjectives[rnd.Next(0, filteredAdjectives.Count())];
                 }
                 else
                 {
-                    return "Nothing found.";
+                    return nothingFound;
                 }
             }
             else
             {
-                return "Unallowed input.";
+                return unallowedInput;
             }
         }
 
