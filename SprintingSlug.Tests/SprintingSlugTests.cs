@@ -94,5 +94,45 @@ namespace SprintingSlug.Tests
             Assert.AreEqual('Z', sprintingSlug.GetAnimal('z').ToCharArray()[0]);
             Assert.AreEqual('Z', sprintingSlug.GetAnimal('Z').ToCharArray()[0]);
         }
+
+        [TestMethod]
+        public void GetAnimal_NotFound()
+        {
+            // Empty the wordlist to be sure that nothing is found
+            sprintingSlug.animals.Clear();
+
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('a'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('X'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('x'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('Z'));
+
+            // Weird but allowed
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ä'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('Ü'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ö'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('Ó'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ô'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('Ô'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ŏ'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ő'));
+            Assert.AreEqual(sprintingSlug.nothingFound, sprintingSlug.GetAnimal('ø'));
+        }
+
+        [TestMethod]
+        public void GetAnimal_NoLetter()
+        {
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('_'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal(' '));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('-'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('%'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('.'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('×'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('¿'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('/'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('|'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('1'));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('='));
+            Assert.AreEqual(sprintingSlug.unallowedInput, sprintingSlug.GetAnimal('#'));
+        }
     }
 }
