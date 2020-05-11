@@ -19,6 +19,9 @@ namespace SprintingSlug
         public readonly string nothingFound = "Nothing found.";
         public readonly string unallowedInput = "Unallowed input.";
 
+        /// <summary>
+        /// Initial setup
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +43,9 @@ namespace SprintingSlug
             }
         }
 
+        /// <summary>
+        /// Returns a random adjective out of the according wordlist where the first letter matches the given parameter
+        /// </summary>
         public string GetAdjective(char c)
         {
             // Check if input is an allowed letter
@@ -64,13 +70,31 @@ namespace SprintingSlug
             }
         }
 
+        /// <summary>
+        /// Returns a random animal out of the according wordlist where the first letter matches the given parameter
+        /// </summary>
         public string GetAnimal(char c)
         {
-            // Filter animals wordlist for leading char (parameter)
-            List<string> filteredAnimals = animals.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
+            // Check if input is an allowed letter
+            if (char.IsLetter(c))
+            {
+                // Filter animals wordlist for leading char (parameter)
+                List<string> filteredAnimals = animals.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
 
-            // Return one random animal from the filtered wordlist
-            return filteredAnimals[rnd.Next(0, filteredAnimals.Count())];
+                if (filteredAnimals.Count > 0)
+                {
+                    // Return one random animal from the filtered wordlist
+                    return filteredAnimals[rnd.Next(0, filteredAnimals.Count())];
+                }
+                else
+                {
+                    return nothingFound;
+                }
+            }
+            else
+            {
+                return unallowedInput;
+            }
         }
     }
 }
