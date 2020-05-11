@@ -55,5 +55,14 @@ namespace SprintingSlug
             // Return one random adjective from the filtered wordlist
             return filteredAdjectives[rnd.Next(0, filteredAdjectives.Count())];
         }
+
+        public string GetAnimal(char c)
+        {
+            // Filter animals wordlist for leading char (parameter)
+            List<string> filteredAnimals = animals.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
+
+            // Return one random animal from the filtered wordlist
+            return filteredAnimals[rnd.Next(0, filteredAnimals.Count())];
+        }
     }
 }
