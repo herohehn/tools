@@ -96,5 +96,21 @@ namespace SprintingSlug
                 return unallowedInput;
             }
         }
+
+        private void refreshAdjectiveButton_Click(object sender, RoutedEventArgs e)
+        {
+            adjectiveLabel.Content = GetAdjective('a');
+        }
+
+        private void refreshAnimalButton_Click(object sender, RoutedEventArgs e)
+        {
+            animalLabel.Content = GetAnimal('a');
+        }
+
+        private void refreshBothButton_Click(object sender, RoutedEventArgs e)
+        {
+            adjectiveLabel.Content = GetAdjective('a');
+            animalLabel.Content = GetAnimal('a');
+        }
     }
 }
