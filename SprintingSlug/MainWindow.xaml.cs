@@ -14,6 +14,7 @@ namespace SprintingSlug
     {
         public List<string> adjectives;
         public List<string> animals;
+        public char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
         readonly Random rnd = new Random();
 
         public readonly string nothingFound = "Nothing found.";
@@ -36,6 +37,9 @@ namespace SprintingSlug
                 CultureInfo currentCulture = System.Threading.Thread.CurrentThread.CurrentCulture;
                 adjectives = adjectives.ConvertAll(adjective => currentCulture.TextInfo.ToTitleCase(adjective.ToLower()));
                 animals = animals.ConvertAll(animal => currentCulture.TextInfo.ToTitleCase(animal.ToLower()));
+
+                // Fill combobox with allowed input
+                alphabetComboBox.ItemsSource = alphabet;
             }
             catch (Exception ex)
             {
@@ -99,18 +103,18 @@ namespace SprintingSlug
 
         private void refreshAdjectiveButton_Click(object sender, RoutedEventArgs e)
         {
-            adjectiveLabel.Content = GetAdjective('a');
+            adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
         }
 
         private void refreshAnimalButton_Click(object sender, RoutedEventArgs e)
         {
-            animalLabel.Content = GetAnimal('a');
+            animalLabel.Content = GetAnimal((char)alphabetComboBox.SelectedItem);
         }
 
         private void refreshBothButton_Click(object sender, RoutedEventArgs e)
         {
-            adjectiveLabel.Content = GetAdjective('a');
-            animalLabel.Content = GetAnimal('a');
+            adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
+            animalLabel.Content = GetAnimal((char)alphabetComboBox.SelectedItem);
         }
     }
 }
