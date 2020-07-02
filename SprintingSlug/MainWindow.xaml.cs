@@ -101,6 +101,21 @@ namespace SprintingSlug
             }
         }
 
+        /// <summary>
+        /// Navigates to the given hyperlink using the system default browser
+        /// </summary>
+        private void BrowserLookup(string hyperlink)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(hyperlink.ToLower());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void refreshAdjectiveButton_Click(object sender, RoutedEventArgs e)
         {
             adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
@@ -119,12 +134,12 @@ namespace SprintingSlug
 
         private void checkAdjectiveButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://dict.leo.org/englisch-deutsch/" + adjectiveLabel.Content.ToString().ToLower());
+            BrowserLookup("https://dict.leo.org/englisch-deutsch/" + adjectiveLabel.Content);
         }
 
         private void checkAnimalButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.google.de/search?q=" + animalLabel.Content.ToString().ToLower() + "&tbm=isch");
+            BrowserLookup("https://www.google.de/search?q=" + animalLabel.Content + "&tbm=isch");
         }
     }
 }
