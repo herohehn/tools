@@ -116,5 +116,15 @@ namespace SprintingSlug
             adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
             animalLabel.Content = GetAnimal((char)alphabetComboBox.SelectedItem);
         }
+
+        private void checkAdjectiveButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://dict.leo.org/englisch-deutsch/" + adjectiveLabel.Content.ToString().ToLower());
+        }
+
+        private void checkAnimalButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.de/search?q=" + animalLabel.Content.ToString().ToLower() + "&tbm=isch");
+        }
     }
 }

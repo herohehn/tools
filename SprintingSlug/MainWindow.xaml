@@ -6,14 +6,16 @@
         xmlns:local="clr-namespace:SprintingSlug"
         FontFamily="Verdana"
         mc:Ignorable="d"
-        Title="Sprinting Slug" Height="200" Width="600">
+        Title="Sprinting Slug" Height="220" Width="600">
 
     <!-- Background="#f5c86e" -->
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.15*" />
             <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="0.15*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -22,14 +24,17 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <Label Name="adjectiveLabel" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Adjective</Label>
-        <Label Name="animalLabel" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">Animal</Label>
+        <Label Name="adjectiveLabel" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Adjective</Label>
+        <Label Name="animalLabel" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left">Animal</Label>
 
-        <ComboBox Name="alphabetComboBox" Grid.Row="1" Margin="5" SelectedIndex="0" ></ComboBox>
+        <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" ></ComboBox>
 
         <Button Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshAdjectiveButton_Click">Refresh adjective</Button>
-        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshAnimalButton_Click">Refresh animal</Button>
+        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="checkAdjectiveButton_Click">?</Button>
+        <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshAnimalButton_Click">Refresh animal</Button>
+        <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="checkAnimalButton_Click">?</Button>
 
-        <Button Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshBothButton_Click">Refresh both</Button>
+
+        <Button Grid.Row="3" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshBothButton_Click">Refresh both</Button>
     </Grid>
 </Window>
