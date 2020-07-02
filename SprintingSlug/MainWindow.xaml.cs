@@ -116,28 +116,28 @@ namespace SprintingSlug
             }
         }
 
-        private void refreshAdjectiveButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshAdjectiveButton_Click(object sender, RoutedEventArgs e)
         {
             adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
         }
 
-        private void refreshAnimalButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshAnimalButton_Click(object sender, RoutedEventArgs e)
         {
             animalLabel.Content = GetAnimal((char)alphabetComboBox.SelectedItem);
         }
 
-        private void refreshBothButton_Click(object sender, RoutedEventArgs e)
+        private void RefreshBothButton_Click(object sender, RoutedEventArgs e)
         {
             adjectiveLabel.Content = GetAdjective((char)alphabetComboBox.SelectedItem);
             animalLabel.Content = GetAnimal((char)alphabetComboBox.SelectedItem);
         }
 
-        private void checkAdjectiveButton_Click(object sender, RoutedEventArgs e)
+        private void LookupAdjectiveButton_Click(object sender, RoutedEventArgs e)
         {
             BrowserLookup("https://dict.leo.org/englisch-deutsch/" + adjectiveLabel.Content);
         }
 
-        private void checkAnimalButton_Click(object sender, RoutedEventArgs e)
+        private void LookupAnimalButton_Click(object sender, RoutedEventArgs e)
         {
             BrowserLookup("https://www.google.de/search?q=" + animalLabel.Content + "&tbm=isch");
         }

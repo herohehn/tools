@@ -29,12 +29,11 @@
 
         <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" ></ComboBox>
 
-        <Button Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshAdjectiveButton_Click">Refresh adjective</Button>
-        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="checkAdjectiveButton_Click">?</Button>
-        <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshAnimalButton_Click">Refresh animal</Button>
-        <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="checkAnimalButton_Click">?</Button>
+        <Button Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="RefreshAdjectiveButton_Click">Refresh adjective</Button>
+        <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="LookupAdjectiveButton_Click">?</Button>
+        <Button Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="RefreshAnimalButton_Click">Refresh animal</Button>
+        <Button Grid.Row="2" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="LookupAnimalButton_Click">?</Button>
 
-
-        <Button Grid.Row="3" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="refreshBothButton_Click">Refresh both</Button>
+        <Button Grid.Row="3" Grid.ColumnSpan="4" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#ff826e" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="RefreshBothButton_Click">Refresh both</Button>
     </Grid>
 </Window>
