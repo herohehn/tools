@@ -1,9 +1,8 @@
 ﻿<Window x:Class="SprintingSlug.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SprintingSlug"
         FontFamily="Verdana"
         mc:Ignorable="d"
         Title="Sprinting Slug" Height="220" Width="600">
@@ -33,7 +32,7 @@
         <Label Name="adjectiveLabel" Foreground="#6ba2a4" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Adjective</Label>
         <Label Name="animalLabel" Foreground="#6ba2a4" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left">Animal</Label>
 
-        <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" ></ComboBox>
+        <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" VerticalContentAlignment="Center"></ComboBox>
 
         <Button Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#2e2d36" Background="#d85d5c" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="RefreshAdjectiveButton_Click">Refresh adjective</Button>
         <Button Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Foreground="#2e2d36" Background="#d85d5c" Padding="1" BorderThickness="0" Margin="5,5,5,5" Click="LookupAdjectiveButton_Click">?</Button>
