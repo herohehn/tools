@@ -57,7 +57,8 @@
         <Label Name="adjectiveLabel" Foreground="#6ba2a4" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">Adjective</Label>
         <Label Name="animalLabel" Foreground="#6ba2a4" Grid.ColumnSpan="2" FontWeight="UltraBold" FontSize="25" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left">Animal</Label>
 
-        <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" VerticalContentAlignment="Center"></ComboBox>
+        <ComboBox Name="alphabetComboBox" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" SelectedIndex="0" VerticalAlignment="Center"></ComboBox>
+        <CheckBox Name="openCompoundCheckBox" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="5,5,5,5" Foreground="#2e2d36" IsChecked="true">Allow open compound animal names</CheckBox>
 
         <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource ButtonStyle}" Click="RefreshAdjectiveButton_Click">Refresh adjective</Button>
         <Button Grid.Row="2" Grid.Column="1" Style="{StaticResource ButtonStyle}" Click="LookupAdjectiveButton_Click">?</Button>

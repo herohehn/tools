@@ -85,6 +85,12 @@ namespace SprintingSlug
                 // Filter animals wordlist for leading char (parameter)
                 List<string> filteredAnimals = animals.FindAll(a => a.ToCharArray()[0] == char.ToUpper(c));
 
+                if (openCompoundCheckBox.IsChecked == false)
+                {
+                    // Remove open compound names like "Galapagos Tortoise"
+                    filteredAnimals = filteredAnimals.Where(a => !a.Contains(" ")).ToList();
+                }
+
                 if (filteredAnimals.Count > 0)
                 {
                     // Return one random animal from the filtered wordlist
