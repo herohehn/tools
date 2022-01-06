@@ -20,14 +20,14 @@ namespace Goodbee
         // - Forced 30 minutes of break after 6 hours of work and 15 minutes of break (as mentioned above)
         // - Hard cut at upper limit of 7 hours and 24 minutes of work, 45 minutes of break (workday) and 2 hours of additional work
 
-        DateTime startTime;
-        DateTime sixHourBreak { get { return startTime.AddHours(6).AddMinutes(15); } }
-        DateTime endTime { get { return startTime.AddHours(7.4).AddMinutes(15).AddMinutes(30); } }
-        DateTime maxEndTime { get { return endTime.AddHours(2); } }
+        private DateTime startTime;
+        private DateTime sixHourBreak => startTime.AddHours(6).AddMinutes(15);
+        private DateTime endTime => startTime.AddHours(7.4).AddMinutes(15).AddMinutes(30);
+        private DateTime maxEndTime => endTime.AddHours(2);
 
         private bool playSound = false;
         private bool flashTaskbar = true;
-        DispatcherTimer timer = new DispatcherTimer();
+        private readonly DispatcherTimer timer = new DispatcherTimer();
 
         /// <summary>
         /// Initial setup
