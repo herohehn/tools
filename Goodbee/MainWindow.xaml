@@ -25,12 +25,12 @@
         <Label Grid.Row="0" VerticalAlignment="Center">Arbeitsbeginn</Label>
         <Label Grid.Row="1" VerticalAlignment="Center">6h Pause</Label>
         <Label Grid.Row="2" VerticalAlignment="Center">Feierabend</Label>
-        <Label Grid.Row="3" VerticalAlignment="Center">9h Pause</Label>
+        <Label Grid.Row="3" VerticalAlignment="Center">Maximum</Label>
 
         <TextBox Name="startTimeTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" Margin="25,0,5,0" KeyDown="StartTimeTextBox_OnKeyDown" GotFocus="StartTimeTextBox_GotFocus" LostFocus="StartTimeTextBox_LostFocus"></TextBox>
         <TextBox Name="sixHourBreakTextBox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSlateGray" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
         <TextBox Name="endTimeTextBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSlateGray" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
-        <TextBox Name="nineHourBreakTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSlateGray" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
+        <TextBox Name="maxEndTimeTextBox" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center" IsReadOnly="True" Background="LightSlateGray" Padding="1" BorderThickness="0" Margin="25,0,5,0"></TextBox>
 
         <Rectangle Grid.Row="4" Grid.RowSpan="2" Grid.ColumnSpan="2" Fill="LightGray"/>
         <Label Grid.Row="4" VerticalAlignment="Center">Sound abspielen</Label>

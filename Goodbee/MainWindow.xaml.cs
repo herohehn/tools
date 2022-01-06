@@ -14,10 +14,16 @@ namespace Goodbee
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Current configuration:
+        // - Net workday duration is 7 hours and 24 minutes (7.4)
+        // - Forced 15 minutes of break after 4 hours and 30 minutes of work
+        // - Forced 30 minutes of break after 6 hours of work and 15 minutes of break (as mentioned above)
+        // - Hard cut at upper limit of 7 hours and 24 minutes of work, 45 minutes of break (workday) and 2 hours of additional work
+
         DateTime startTime;
-        DateTime sixHourBreak { get { return startTime.AddHours(6); } }
-        DateTime endTime { get { return startTime.AddHours(7.6).AddMinutes(30); } }
-        DateTime nineHourBreak { get { return startTime.AddHours(9.5); } }
+        DateTime sixHourBreak { get { return startTime.AddHours(6).AddMinutes(15); } }
+        DateTime endTime { get { return startTime.AddHours(7.4).AddMinutes(15).AddMinutes(30); } }
+        DateTime maxEndTime { get { return endTime.AddHours(2); } }
 
         private bool playSound = false;
         private bool flashTaskbar = true;
@@ -148,7 +154,7 @@ namespace Goodbee
             startTimeTextBox.Text = startTime.ToShortTimeString();
             sixHourBreakTextBox.Text = sixHourBreak.ToShortTimeString();
             endTimeTextBox.Text = endTime.ToShortTimeString();
-            nineHourBreakTextBox.Text = nineHourBreak.ToShortTimeString();
+            maxEndTimeTextBox.Text = maxEndTime.ToShortTimeString();
         }
 
         /// <summary>
